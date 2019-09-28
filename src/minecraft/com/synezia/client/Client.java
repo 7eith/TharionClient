@@ -1,9 +1,14 @@
 package com.synezia.client;
 
+import java.lang.reflect.Modifier;
+
 import org.apache.logging.log4j.LogManager;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.synezia.client.session.ClientSession;
+
 import lombok.Getter;
-import net.minecraft.client.Minecraft;
 
 public class Client {
 	
@@ -11,13 +16,7 @@ public class Client {
 	 * Client instance
 	 */
 	
-	@Getter private static Client i;
-	
-	/**
-	 * Debug Mode
-	 */
-
-	@Getter private boolean debug = false;
+	@Getter public static Client i;
 	
 	/**
 	 * Client constructor
@@ -26,7 +25,7 @@ public class Client {
 	public Client()
 	{
 		i = this;
-		LogManager.getLogger().debug("Launching Client");
+		LogManager.getLogger().info("Launching Client");
 	}
 	
 	public void start()
@@ -43,5 +42,15 @@ public class Client {
 	{
 		
 	}
+	
+	/***************************
+	 * 
+	 * Others Methods
+	 * 
+	 **************************/
 
+	public Gson getGsonInstance() {
+		return new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().serializeNulls().excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.VOLATILE).create();
+	}
+	
 }

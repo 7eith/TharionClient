@@ -1,8 +1,7 @@
 package net.minecraft.client.main;
 
-import com.google.common.collect.HashMultimap;
-import com.google.gson.Gson;
 import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
 import java.net.Authenticator;
 import java.net.InetSocketAddress;
@@ -14,6 +13,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import com.google.common.collect.HashMultimap;
+import com.google.gson.Gson;
+import com.synezia.client.Client;
+import com.synezia.client.session.ClientSession;
+
 import joptsimple.ArgumentAcceptingOptionSpec;
 import joptsimple.NonOptionArgumentSpec;
 import joptsimple.OptionParser;
@@ -82,12 +87,24 @@ public class Main
         ArgumentAcceptingOptionSpec var17 = var1.accepts("userProperties").withRequiredArg().required();
         ArgumentAcceptingOptionSpec var18 = var1.accepts("assetIndex").withRequiredArg();
         ArgumentAcceptingOptionSpec var19 = var1.accepts("userType").withRequiredArg().defaultsTo("legacy", new String[0]);
+        
+        /* Client */
+        ArgumentAcceptingOptionSpec securityToken = var1.accepts("sessionToken").withRequiredArg();
+        
         NonOptionArgumentSpec var20 = var1.nonOptions();
         OptionSet var21 = var1.parse(p_main_0_);
         List var22 = var21.valuesOf(var20);
         String var23 = (String)var21.valueOf(var7);
         Proxy var24 = Proxy.NO_PROXY;
+        
+        /**
+         * Client
+         *  Initialize instant Security System.
+         */
 
+        ClientSession clientSession = new ClientSession((String)securityToken.value(var21));
+        clientSession.verify();
+        
         if (var23 != null)
         {
             try

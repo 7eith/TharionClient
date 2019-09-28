@@ -1,15 +1,5 @@
 package net.minecraft.client;
 
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Multimap;
-import com.google.common.collect.Queues;
-import com.google.common.util.concurrent.Futures;
-import com.google.common.util.concurrent.ListenableFuture;
-import com.google.common.util.concurrent.ListenableFutureTask;
-import com.mojang.authlib.minecraft.MinecraftSessionService;
-import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
-import io.netty.util.concurrent.GenericFutureListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -30,7 +20,38 @@ import java.util.UUID;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
+
 import javax.imageio.ImageIO;
+
+import org.apache.commons.lang3.Validate;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.lwjgl.LWJGLException;
+import org.lwjgl.Sys;
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.ContextCapabilities;
+import org.lwjgl.opengl.Display;
+import org.lwjgl.opengl.DisplayMode;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GLContext;
+import org.lwjgl.opengl.OpenGLException;
+import org.lwjgl.opengl.PixelFormat;
+import org.lwjgl.util.glu.GLU;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Multimap;
+import com.google.common.collect.Queues;
+import com.google.common.util.concurrent.Futures;
+import com.google.common.util.concurrent.ListenableFuture;
+import com.google.common.util.concurrent.ListenableFutureTask;
+import com.mojang.authlib.minecraft.MinecraftSessionService;
+import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
+import com.synezia.client.Client;
+
+import io.netty.util.concurrent.GenericFutureListener;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.audio.MusicTicker;
@@ -150,22 +171,6 @@ import net.minecraft.world.chunk.storage.AnvilSaveConverter;
 import net.minecraft.world.storage.ISaveFormat;
 import net.minecraft.world.storage.ISaveHandler;
 import net.minecraft.world.storage.WorldInfo;
-import org.apache.commons.lang3.Validate;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.lwjgl.LWJGLException;
-import org.lwjgl.Sys;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.ContextCapabilities;
-import org.lwjgl.opengl.Display;
-import org.lwjgl.opengl.DisplayMode;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GLContext;
-import org.lwjgl.opengl.OpenGLException;
-import org.lwjgl.opengl.PixelFormat;
-import org.lwjgl.util.glu.GLU;
 
 public class Minecraft implements IPlayerUsage
 {
@@ -325,8 +330,10 @@ public class Minecraft implements IPlayerUsage
 
     /** Profiler currently displayed in the debug screen pie chart */
     private String debugProfilerName = "root";
-    private static final String __OBFID = "CL_00000631";
-
+    
+    /** Client **/
+    private Client client;
+    
     public Minecraft(Session p_i1103_1_, int p_i1103_2_, int p_i1103_3_, boolean p_i1103_4_, boolean p_i1103_5_, File p_i1103_6_, File p_i1103_7_, File p_i1103_8_, Proxy p_i1103_9_, String p_i1103_10_, Multimap p_i1103_11_, String p_i1103_12_)
     {
         theMinecraft = this;
@@ -352,6 +359,11 @@ public class Minecraft implements IPlayerUsage
         this.jvm64bit = isJvm64bit();
         ImageIO.setUseCache(false);
         Bootstrap.func_151354_b();
+        
+        /** Client **/
+        
+        this.client = new Client();
+        this.client.start();
     }
 
     private static boolean isJvm64bit()
@@ -476,7 +488,7 @@ public class Minecraft implements IPlayerUsage
         }
 
         Display.setResizable(true);
-        Display.setTitle("Minecraft 1.7.10");
+        Display.setTitle("Synezia - Reflect");
         logger.info("LWJGL Version: " + Sys.getVersion());
         Util.EnumOS var1 = Util.getOSType();
 
@@ -901,6 +913,10 @@ public class Minecraft implements IPlayerUsage
      */
     public void shutdownMinecraftApplet()
     {
+    	/** Client **/
+    	
+    	this.client.shutdown();
+    	
         try
         {
             this.field_152353_at.func_152923_i();
@@ -1662,6 +1678,10 @@ public class Minecraft implements IPlayerUsage
      */
     public void runTick()
     {
+    	/** Client **/
+    	
+    	this.client.runTick();
+    	
         this.mcProfiler.startSection("scheduledExecutables");
         Queue var1 = this.field_152351_aB;
 

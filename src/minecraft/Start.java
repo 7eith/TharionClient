@@ -15,8 +15,7 @@ public class Start
         		"--assetIndex", "1.7.10",
         		"--userProperties", "{}",
         		"--username", "Snkh",
-        		"--token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNua2giLCJpcCI6Ijo6ZmZmZjoxMjcuMC4wLjEiLCJpYXQiOjE1Njc5MjM0NzksImV4cCI6MTU2ODAwOTg3OX0.QrbSAgnjiaGQ8d0iG4_nazEYJavc84w32g0BZj_3tkE",
-        		"--debug", "1"
+        		"--sessionToken", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNua2giLCJpcCI6Ijo6ZmZmZjoxMjcuMC4wLjEiLCJpYXQiOjE1Njk2ODk3NTUsImV4cCI6MTU2OTc3NjE1NX0.7Tnes_LSL5RTQfCIbO38aWm0saFucHge0gGmnUSkE90"
         }, args));
     }
 
