@@ -9,10 +9,11 @@ import java.util.PriorityQueue;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.shader.TesselatorVertexState;
 import net.minecraft.client.util.QuadComparator;
-import net.minecraft.src.Config;
-import net.minecraft.src.VertexData;
+import net.minecraft.optifine.Config;
+import net.minecraft.optifine.VertexData;
+import net.minecraft.shader.client.ShadersTess;
+
 import org.lwjgl.opengl.GL11;
-import shadersmod.client.ShadersTess;
 
 public class Tessellator
 {

@@ -5,7 +5,7 @@ import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
-import net.minecraft.src.Config;
+import net.minecraft.optifine.Config;
 
 import org.lwjgl.opengl.ARBFramebufferObject;
 import org.lwjgl.opengl.ARBMultitexture;

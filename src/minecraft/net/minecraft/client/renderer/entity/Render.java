@@ -11,14 +11,14 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.init.Blocks;
-import net.minecraft.src.Config;
+import net.minecraft.optifine.Config;
+import net.minecraft.shader.client.Shaders;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
-import shadersmod.client.Shaders;
 
 public abstract class Render
 {

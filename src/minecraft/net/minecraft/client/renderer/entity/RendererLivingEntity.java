@@ -13,8 +13,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.src.Config;
-import net.minecraft.src.Reflector;
+import net.minecraft.optifine.Config;
+import net.minecraft.optifine.Reflector;
+import net.minecraft.shader.client.Shaders;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
@@ -22,7 +23,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
-import shadersmod.client.Shaders;
 
 public abstract class RendererLivingEntity extends Render
 {

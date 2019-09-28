@@ -1,10 +1,10 @@
 package net.minecraft.client.renderer.texture;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Config;
+import net.minecraft.optifine.Config;
+import net.minecraft.shader.client.ShadersTex;
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.world.World;
-import shadersmod.client.ShadersTex;
 
 public class TextureCompass extends TextureAtlasSprite
 {

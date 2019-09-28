@@ -9,11 +9,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.src.Config;
+import net.minecraft.optifine.Config;
+import net.minecraft.shader.client.Shaders;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
-import shadersmod.client.Shaders;
 
 public class RenderEnderman extends RenderLiving
 {

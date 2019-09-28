@@ -65,17 +65,18 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemDye;
 import net.minecraft.item.ItemRecord;
+import net.minecraft.optifine.CompactArrayList;
+import net.minecraft.optifine.Config;
+import net.minecraft.optifine.CustomColorizer;
+import net.minecraft.optifine.CustomSky;
+import net.minecraft.optifine.DynamicLights;
+import net.minecraft.optifine.EntitySorterFast;
+import net.minecraft.optifine.RandomMobs;
+import net.minecraft.optifine.Reflector;
+import net.minecraft.optifine.WrDisplayListAllocator;
+import net.minecraft.optifine.WrUpdates;
 import net.minecraft.profiler.Profiler;
-import net.minecraft.src.CompactArrayList;
-import net.minecraft.src.Config;
-import net.minecraft.src.CustomColorizer;
-import net.minecraft.src.CustomSky;
-import net.minecraft.src.DynamicLights;
-import net.minecraft.src.EntitySorterFast;
-import net.minecraft.src.RandomMobs;
-import net.minecraft.src.Reflector;
-import net.minecraft.src.WrDisplayListAllocator;
-import net.minecraft.src.WrUpdates;
+import net.minecraft.shader.client.Shaders;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.tileentity.TileEntitySign;
@@ -96,7 +97,6 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.ARBOcclusionQuery;
 import org.lwjgl.opengl.GL11;
-import shadersmod.client.Shaders;
 
 public class RenderGlobal implements IWorldAccess
 {

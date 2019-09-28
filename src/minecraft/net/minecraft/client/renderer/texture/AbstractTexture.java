@@ -1,7 +1,7 @@
 package net.minecraft.client.renderer.texture;
 
-import shadersmod.client.MultiTexID;
-import shadersmod.client.ShadersTex;
+import net.minecraft.shader.client.MultiTexID;
+import net.minecraft.shader.client.ShadersTex;
 
 public abstract class AbstractTexture implements ITextureObject {
 	public int glTextureId = -1;

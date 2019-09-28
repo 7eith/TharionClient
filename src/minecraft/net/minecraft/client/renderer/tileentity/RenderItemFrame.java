@@ -20,15 +20,15 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.src.Config;
-import net.minecraft.src.Reflector;
+import net.minecraft.optifine.Config;
+import net.minecraft.optifine.Reflector;
+import net.minecraft.shader.client.ShadersTex;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.MapData;
 import org.lwjgl.opengl.GL11;
-import shadersmod.client.ShadersTex;
 
 public class RenderItemFrame extends Render
 {

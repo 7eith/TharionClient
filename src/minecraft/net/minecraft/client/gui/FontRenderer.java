@@ -18,9 +18,9 @@ import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.client.resources.IResourceManagerReloadListener;
 import net.minecraft.client.settings.GameSettings;
-import net.minecraft.src.Config;
-import net.minecraft.src.CustomColorizer;
-import net.minecraft.src.FontUtils;
+import net.minecraft.optifine.Config;
+import net.minecraft.optifine.CustomColorizer;
+import net.minecraft.optifine.FontUtils;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 

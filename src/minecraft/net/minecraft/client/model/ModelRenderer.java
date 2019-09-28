@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.renderer.GLAllocation;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.src.ModelSprite;
+import net.minecraft.optifine.ModelSprite;
+
 import org.lwjgl.opengl.GL11;
 
 public class ModelRenderer

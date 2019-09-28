@@ -38,13 +38,14 @@ import net.minecraft.client.renderer.tileentity.TileEntityRendererChestHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.src.Config;
-import net.minecraft.src.ConnectedTextures;
-import net.minecraft.src.CustomColorizer;
-import net.minecraft.src.NaturalProperties;
-import net.minecraft.src.NaturalTextures;
-import net.minecraft.src.Reflector;
-import net.minecraft.src.TextureUtils;
+import net.minecraft.optifine.Config;
+import net.minecraft.optifine.ConnectedTextures;
+import net.minecraft.optifine.CustomColorizer;
+import net.minecraft.optifine.NaturalProperties;
+import net.minecraft.optifine.NaturalTextures;
+import net.minecraft.optifine.Reflector;
+import net.minecraft.optifine.TextureUtils;
+import net.minecraft.shader.client.Shaders;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFlowerPot;
 import net.minecraft.util.Direction;
@@ -55,7 +56,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
-import shadersmod.client.Shaders;
 
 public class RenderBlocks
 {

@@ -3,8 +3,8 @@ package net.minecraft.client.renderer.texture;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import net.minecraft.client.resources.IResourceManager;
-import net.minecraft.src.Config;
-import shadersmod.client.ShadersTex;
+import net.minecraft.optifine.Config;
+import net.minecraft.shader.client.ShadersTex;
 
 public class DynamicTexture extends AbstractTexture
 {

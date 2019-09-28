@@ -33,17 +33,17 @@ import net.minecraft.client.resources.data.TextureMetadataSection;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.item.Item;
-import net.minecraft.src.Config;
-import net.minecraft.src.ConnectedTextures;
-import net.minecraft.src.CustomItems;
-import net.minecraft.src.Reflector;
-import net.minecraft.src.TextureUtils;
-import net.minecraft.src.WrUpdates;
+import net.minecraft.optifine.Config;
+import net.minecraft.optifine.ConnectedTextures;
+import net.minecraft.optifine.CustomItems;
+import net.minecraft.optifine.Reflector;
+import net.minecraft.optifine.TextureUtils;
+import net.minecraft.optifine.WrUpdates;
+import net.minecraft.shader.client.ShadersTex;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ReportedException;
 import net.minecraft.util.ResourceLocation;
-import shadersmod.client.ShadersTex;
 
 public class TextureMap extends AbstractTexture implements ITickableTextureObject, IIconRegister
 {

@@ -2,17 +2,17 @@ package net.minecraft.client.gui;
 
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
-import net.minecraft.src.Config;
-import net.minecraft.src.GuiAnimationSettingsOF;
-import net.minecraft.src.GuiDetailSettingsOF;
-import net.minecraft.src.GuiOptionButtonOF;
-import net.minecraft.src.GuiOptionSliderOF;
-import net.minecraft.src.GuiOtherSettingsOF;
-import net.minecraft.src.GuiPerformanceSettingsOF;
-import net.minecraft.src.GuiQualitySettingsOF;
-import net.minecraft.src.Lang;
-import net.minecraft.src.TooltipManager;
-import shadersmod.client.GuiShaders;
+import net.minecraft.optifine.Config;
+import net.minecraft.optifine.GuiAnimationSettingsOF;
+import net.minecraft.optifine.GuiDetailSettingsOF;
+import net.minecraft.optifine.GuiOptionButtonOF;
+import net.minecraft.optifine.GuiOptionSliderOF;
+import net.minecraft.optifine.GuiOtherSettingsOF;
+import net.minecraft.optifine.GuiPerformanceSettingsOF;
+import net.minecraft.optifine.GuiQualitySettingsOF;
+import net.minecraft.optifine.Lang;
+import net.minecraft.optifine.TooltipManager;
+import net.minecraft.shader.client.GuiShaders;
 
 public class GuiVideoSettings extends GuiScreen
 {

@@ -6,9 +6,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityHanging;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.src.Config;
+import net.minecraft.optifine.Config;
+import net.minecraft.shader.client.Shaders;
+
 import org.lwjgl.opengl.GL11;
-import shadersmod.client.Shaders;
 
 public abstract class RenderLiving extends RendererLivingEntity
 {

@@ -40,17 +40,19 @@ import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.optifine.Config;
+import net.minecraft.optifine.CustomColorizer;
+import net.minecraft.optifine.ItemRendererOF;
+import net.minecraft.optifine.RandomMobs;
+import net.minecraft.optifine.Reflector;
+import net.minecraft.optifine.ReflectorForge;
+import net.minecraft.optifine.RenderPlayerOF;
+import net.minecraft.optifine.TextureUtils;
+import net.minecraft.optifine.WrUpdates;
 import net.minecraft.potion.Potion;
 import net.minecraft.server.integrated.IntegratedServer;
-import net.minecraft.src.Config;
-import net.minecraft.src.CustomColorizer;
-import net.minecraft.src.ItemRendererOF;
-import net.minecraft.src.RandomMobs;
-import net.minecraft.src.Reflector;
-import net.minecraft.src.ReflectorForge;
-import net.minecraft.src.RenderPlayerOF;
-import net.minecraft.src.TextureUtils;
-import net.minecraft.src.WrUpdates;
+import net.minecraft.shader.client.Shaders;
+import net.minecraft.shader.client.ShadersRender;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
@@ -71,8 +73,6 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GLContext;
 import org.lwjgl.util.glu.GLU;
 import org.lwjgl.util.glu.Project;
-import shadersmod.client.Shaders;
-import shadersmod.client.ShadersRender;
 
 public class EntityRenderer implements IResourceManagerReloadListener
 {

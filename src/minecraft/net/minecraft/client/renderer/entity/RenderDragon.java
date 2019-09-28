@@ -10,11 +10,11 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.boss.BossStatus;
 import net.minecraft.entity.boss.EntityDragon;
-import net.minecraft.src.Config;
+import net.minecraft.optifine.Config;
+import net.minecraft.shader.client.Shaders;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
-import shadersmod.client.Shaders;
 
 public class RenderDragon extends RenderLiving
 {

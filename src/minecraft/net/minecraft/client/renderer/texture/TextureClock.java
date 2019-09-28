@@ -1,8 +1,8 @@
 package net.minecraft.client.renderer.texture;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.src.Config;
-import shadersmod.client.ShadersTex;
+import net.minecraft.optifine.Config;
+import net.minecraft.shader.client.ShadersTex;
 
 public class TextureClock extends TextureAtlasSprite
 {

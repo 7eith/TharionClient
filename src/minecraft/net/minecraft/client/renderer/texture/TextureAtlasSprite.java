@@ -14,14 +14,14 @@ import net.minecraft.client.resources.data.AnimationFrame;
 import net.minecraft.client.resources.data.AnimationMetadataSection;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
-import net.minecraft.src.Config;
-import net.minecraft.src.Mipmaps;
-import net.minecraft.src.TextureUtils;
+import net.minecraft.optifine.Config;
+import net.minecraft.optifine.Mipmaps;
+import net.minecraft.optifine.TextureUtils;
+import net.minecraft.shader.client.Shaders;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ReportedException;
 import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
-import shadersmod.client.Shaders;
 
 public class TextureAtlasSprite implements IIcon
 {
