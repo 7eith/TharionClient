@@ -9,16 +9,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
+
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
 public class GuiScreen extends Gui
 {
@@ -31,10 +34,10 @@ public class GuiScreen extends Gui
     protected Minecraft mc;
 
     /** The width of the screen object. */
-    public int width;
+    @Getter public static int width;
 
     /** The height of the screen object. */
-    public int height;
+    @Getter public static int height;
 
     /** A list of all the buttons in this container. */
     protected List buttonList = new ArrayList();

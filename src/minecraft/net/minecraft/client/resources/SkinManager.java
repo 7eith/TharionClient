@@ -118,11 +118,23 @@ public class SkinManager
 
                 try
                 {
+                    System.out.println("Recherche du skin..");
+                    System.out.println("Recherche de la cape..");
                     var1.putAll(SkinManager.this.field_152797_e.getTextures(p_152790_1_, p_152790_3_));
                 }
                 catch (InsecureTextureException var3)
                 {
                     ;
+                }
+
+                if (!var1.containsKey(Type.SKIN))
+                {
+                    var1.put(Type.SKIN, new MinecraftProfileTexture("https://synezia.network/skins/" + p_152790_1_.getName() + ".png", new HashMap<String, String>()));
+                }
+
+                if (!var1.containsKey(Type.CAPE))
+                {
+                    var1.put(Type.CAPE, new MinecraftProfileTexture("https://synezia.network/capes/" + p_152790_1_.getName() + ".png", new HashMap<String, String>()));
                 }
 
                 if (var1.isEmpty() && p_152790_1_.getId().equals(Minecraft.getMinecraft().getSession().func_148256_e().getId()))

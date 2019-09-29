@@ -15,6 +15,11 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+/**
+ * @author Snkh
+ *	29 sept. 2019
+ */
+
 public class ClientSession {
 	
 	@Getter public static ClientSession session;
@@ -22,6 +27,8 @@ public class ClientSession {
 	@Getter @Setter private boolean verified;
 	
 	@Getter @Setter private String verifyURL = "http://auth.synezia.network:8080/verify"; 
+	
+	private boolean debug = true;
 	
 	/**
 	 * Initialize ClientSession with his token 
@@ -51,6 +58,11 @@ public class ClientSession {
 	
 	public void verify()
 	{		
+		if (debug)
+		{
+			this.verified = true;
+			return;
+		}
 		Response response = null;
 		ClientSessionVerifyResponse res = null;
 		

@@ -1,6 +1,8 @@
 package net.minecraft.client.renderer;
 
 import com.google.gson.JsonSyntaxException;
+import com.synezia.client.utilities.MousePosition;
+
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.FloatBuffer;
@@ -1437,6 +1439,9 @@ public class EntityRenderer implements IResourceManagerReloadListener
                     if (!var12)
                     {
                         this.mc.currentScreen.drawScreen(var161, var171, par1);
+                        
+                        /** Client **/
+                        MousePosition.set(var161, var171);
                     }
 
                     Reflector.postForgeBusEvent(Reflector.DrawScreenEvent_Post_Constructor, new Object[] {this.mc.currentScreen, Integer.valueOf(var161), Integer.valueOf(var171), Float.valueOf(par1)});

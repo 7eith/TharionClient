@@ -1,5 +1,7 @@
 package net.minecraft.client.gui;
 
+import com.synezia.client.interfaces.games.EscapeInterface;
+
 import net.minecraft.client.gui.achievement.GuiAchievements;
 import net.minecraft.client.gui.achievement.GuiStats;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -56,8 +58,7 @@ public class GuiIngameMenu extends GuiScreen
                 break;
 
             case 4:
-                this.mc.displayGuiScreen((GuiScreen)null);
-                this.mc.setIngameFocus();
+                this.mc.displayGuiScreen(new EscapeInterface());
                 break;
 
             case 5:
