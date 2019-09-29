@@ -50,6 +50,7 @@ import com.google.common.util.concurrent.ListenableFutureTask;
 import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.synezia.client.Client;
+import com.synezia.client.waypoints.WaypointEntity;
 
 import io.netty.util.concurrent.GenericFutureListener;
 import net.minecraft.block.Block;
@@ -2303,6 +2304,8 @@ public class Minecraft implements IPlayerUsage
 
         if (p_71353_1_ != null)
         {
+        	WaypointEntity waypoint = new WaypointEntity(this.theWorld);
+            this.theWorld.spawnEntityInWorld(waypoint);
             if (this.renderGlobal != null)
             {
                 this.renderGlobal.setWorldAndLoadRenderers(p_71353_1_);

@@ -5,6 +5,9 @@ import java.lang.reflect.Modifier;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.synezia.client.settings.SettingsManager;
+import com.synezia.client.utilities.Colors;
+import com.synezia.client.utilities.ColorsAdapter;
+import com.synezia.client.waypoints.WaypointManager;
 
 import lombok.Getter;
 
@@ -32,6 +35,7 @@ public class Client {
 	 */
 	
 	@Getter private SettingsManager settingsManager;
+	@Getter private WaypointManager waypointsManager;
 	
 	/**
 	 * Client constructor
@@ -40,8 +44,10 @@ public class Client {
 	public Client()
 	{
 		i = this;
-		this.gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().serializeNulls().excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.VOLATILE).create();
+		this.gson = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().serializeNulls().excludeFieldsWithModifiers(Modifier.TRANSIENT, Modifier.VOLATILE).registerTypeAdapter(Colors.class, new ColorsAdapter()).create();
+		
 		this.settingsManager = new SettingsManager();
+		this.waypointsManager = new WaypointManager();
 	}
 	
 	public void start()
@@ -57,6 +63,8 @@ public class Client {
 	public void shutdown()
 	{
 		this.settingsManager.save();
+		this.waypointsManager.save();
+		
 	}
 	
 }

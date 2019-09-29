@@ -3,6 +3,12 @@ package net.minecraft.client.renderer.entity;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
+import org.lwjgl.opengl.GL11;
+
+import com.synezia.client.waypoints.WaypointEntity;
+import com.synezia.client.waypoints.WaypointRender;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.model.ModelChicken;
@@ -90,7 +96,6 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ReportedException;
 import net.minecraft.world.World;
-import org.lwjgl.opengl.GL11;
 
 public class RenderManager
 {
@@ -184,6 +189,7 @@ public class RenderManager
         this.entityRenderMap.put(EntityFishHook.class, new RenderFish());
         this.entityRenderMap.put(EntityHorse.class, new RenderHorse(new ModelHorse(), 0.75F));
         this.entityRenderMap.put(EntityLightningBolt.class, new RenderLightningBolt());
+        this.entityRenderMap.put(WaypointEntity.class, new WaypointRender());
         Iterator var1 = this.entityRenderMap.values().iterator();
 
         while (var1.hasNext())
