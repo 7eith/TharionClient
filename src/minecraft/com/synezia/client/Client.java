@@ -50,11 +50,6 @@ public class Client {
 		this.waypointsManager = new WaypointManager();
 	}
 	
-	public void start()
-	{
-		
-	}
-	
 	public void runTick()
 	{
 		

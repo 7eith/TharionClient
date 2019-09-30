@@ -43,9 +43,7 @@ public class WaypointManager
 		waypoints.clear();
 		waypoints.addAll(waypointsList);
 
-		Waypoint facWaypoint = new Waypoint(WaypointType.FACTION, "&eFaction Waypoint", 0, 150, 0).withColor(Colors.DARK_PURPLE);
-		
-		waypoints.add(facWaypoint);
+		waypoints.add(new Waypoint(WaypointType.FACTION, "&eFaction Waypoint", 0, 150, 0).withColor(Colors.DARK_PURPLE));
 	}
 	
     public Waypoint getWaypointAt(Integer posX, Integer posY, Integer posZ) {
@@ -62,8 +60,6 @@ public class WaypointManager
 				.stream()
 				.filter(w -> w.getType() == WaypointType.PLAYER)
 				.collect(Collectors.toList());
-		
-		System.out.println(playerWaypoints);
 		
 		Disk.writeCatch(this.getFile(), Client.i.getGson().toJson(playerWaypoints));
 	}

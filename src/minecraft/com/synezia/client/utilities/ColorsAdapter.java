@@ -11,7 +11,10 @@ import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import com.synezia.client.Client;
 
-import net.minecraft.world.World;
+/**
+ * @author Snkh
+ *	30 sept. 2019
+ */
 
 public class ColorsAdapter extends TypeAdapter<Colors> {
 
@@ -36,5 +39,4 @@ public class ColorsAdapter extends TypeAdapter<Colors> {
 		
 		writer.value(Client.i.getGson().toJson(serial));
 	}
-
 }

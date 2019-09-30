@@ -23,7 +23,9 @@ public enum Resource {
 	KEYBOARD("keyboard", ResourceType.ICON),
 	COG("cog", ResourceType.ICON),
 	
-	PLUS("heart-1", ResourceType.ICON);
+	
+	PLACEHOLDER("placeholder", ResourceType.ICON),
+	PLUS("plus", ResourceType.ICON);
 
 	private String name;
 	private ResourceType type;

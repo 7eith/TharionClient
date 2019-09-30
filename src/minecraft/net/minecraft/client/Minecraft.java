@@ -364,7 +364,6 @@ public class Minecraft implements IPlayerUsage
         /** Client **/
         
         this.client = new Client();
-        this.client.start();
     }
 
     private static boolean isJvm64bit()
