@@ -44,6 +44,7 @@ public class WaypointManager
 		waypoints.addAll(waypointsList);
 
 		waypoints.add(new Waypoint(WaypointType.FACTION, "&eFaction Waypoint", 0, 150, 0).withColor(Colors.DARK_PURPLE));
+		waypoints.add(new Waypoint(WaypointType.CLAN, "&cEnculer de clan Waypoint", 0, 30, 0).withColor(Colors.MIDNIGHT));
 	}
 	
     public Waypoint getWaypointAt(Integer posX, Integer posY, Integer posZ) {

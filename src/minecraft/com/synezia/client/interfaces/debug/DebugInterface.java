@@ -19,6 +19,8 @@ public class DebugInterface extends Interface {
 	
 	private ColoredBackground background = new ColoredBackground(500, 200).withSize(new Size(20, 20)).withColor(new Colors(new Color(0))).withTransparency(0.8f);
 	private Color color;
+	
+	private Float transparency = 0.0F;
 
 	@Override
 	public void initializeInterface() {
@@ -32,10 +34,16 @@ public class DebugInterface extends Interface {
 		
 		this.background.draw();
 		
+		new ColoredBackground().withColor(Colors.PURPLE).withTransparency(this.transparency).draw();
+		
 	}
 
 	@Override
 	public void updateInterface() {
+		
+		
+		this.transparency = transparency + 0.2F; 
+		
 		Random random = new Random();
 		
 		final float hue = random.nextFloat();

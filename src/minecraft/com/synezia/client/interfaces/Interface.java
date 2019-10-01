@@ -113,5 +113,13 @@ public abstract class Interface extends GuiScreen {
 		for(Component component: components) 
 			if(component.getId() == id) components.remove(component);
 	}
+	
+	
+	/**
+	 *  Helpers
+	 */
+	
+	@Getter private Integer splitWidth = this.getWidth() / 2;
+	@Getter private Integer splitHeight = this.getHeight() / 2;
 
 }

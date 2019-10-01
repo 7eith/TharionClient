@@ -33,6 +33,7 @@ public class WaypointRender extends Render {
     private boolean animation;
     
     public WaypointRender() {
+    	animation = true;
     	this.fontRenderer = minecraft.fontRenderer;
 	}
 
@@ -59,7 +60,7 @@ public class WaypointRender extends Render {
                 int widthPos = 0;
                 int width = this.fontRenderer.getStringWidth(name) / 2;
                 float size = ((float)distanceAtPlayer * 0.09f + 1.0f) * 0.0166f;
-                if (waypoint.getType() == WaypointType.TRADE) {
+                if (waypoint.getType() == WaypointType.CLAN) {
                     width = 8;
                     widthPos = 4;
                     if (System.currentTimeMillis() - this.time > 5000) {
@@ -141,7 +142,7 @@ public class WaypointRender extends Render {
                 
                 GL11.glDisable((int)32823);
                 GL11.glEnable((int)3553);
-                if (waypoint.getType() == WaypointType.TRADE) {
+                if (waypoint.getType() == WaypointType.CLAN) {
                     if (this.animation) {
                         String info = Utilities.color("&e&l!");
                         new Text(info, widthPos + (- width), -2).withSize(TextSize.LARGE).draw();
@@ -151,6 +152,7 @@ public class WaypointRender extends Render {
                         RenderHelper.enableGUIStandardItemLighting();
                         itemRenderer.renderItemIntoGUI(this.fontRenderer, this.minecraft.getTextureManager(), item, - width, -4);
                         RenderHelper.disableStandardItemLighting();
+                        new Text(waypoint.getTitle(), widthPos + (- width), -2).withSize(TextSize.LARGE).draw();
                     }
                 } else if (waypoint.getType() == WaypointType.PLAYER) {
                     new Text(name, widthPos + (- width), 0).draw();

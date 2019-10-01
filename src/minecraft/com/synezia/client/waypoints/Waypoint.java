@@ -1,5 +1,7 @@
 package com.synezia.client.waypoints;
 
+import java.util.List;
+
 import com.synezia.client.utilities.Colors;
 
 import lombok.Data;

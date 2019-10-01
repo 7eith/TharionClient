@@ -59,6 +59,8 @@ public class WaypointInterface extends Interface {
 	private WaypointManager waypointsManager;
 	private List<Waypoint> waypoints;
 	
+	private float transparency = 0.0F;
+	
 	public WaypointInterface() 
 	{
 		this.waypointsManager = Client.i.getWaypointsManager();
@@ -92,7 +94,7 @@ public class WaypointInterface extends Interface {
 		        int x = MathHelper.floor_double(mc.thePlayer.posX);
 		        int y = MathHelper.floor_double(mc.thePlayer.posY);
 		        int z = MathHelper.floor_double(mc.thePlayer.posZ);
-				waypoints.add(new Waypoint(WaypointType.CLAN, "&eCaserne de clan", x, y, z));
+				waypoints.add(new Waypoint(WaypointType.PLAYER, "&eCaserne de clan", x, y, z));
 				mc.displayGuiScreen(null);
 			}
 		});
@@ -106,7 +108,7 @@ public class WaypointInterface extends Interface {
 	@Override
 	public void drawComponents() {
 		
-        new ColoredBackground().withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withTransparency(0.7F).draw();
+        new ColoredBackground().withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withTransparency(transparency).draw();
         
         /**
          * Calculs helpful
@@ -124,8 +126,8 @@ public class WaypointInterface extends Interface {
         // Siderbar right 
         
         new ColoredBackground(180, 0).withSize(new Size(width, 15)).withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withTransparency(0.6F).draw(); // Background
-        new Text("&7• &cOptions > Mods > Waypoints", 183, 4).draw();
-        new Text("X", width - 10, 4).draw();
+//        new Text("&7• &cOptions > Mods > Waypoints", 183, 4).draw();
+//        new Text("X", width - 10, 4).draw();
         
         new ColoredBackground(35, 0).withSize(new Size(145, height)).withColor(new Colors(Color.GRAY, Color.BLACK)).withBorders(true).withTransparency(0.35F).draw(); // Background
         new ColoredBackground(35, 0).withSize(new Size(145, 15)).withColor(new Colors(new Color(44,56,126), Color.BLACK)).withTransparency(0.85F).draw(); // Title? 
@@ -143,7 +145,7 @@ public class WaypointInterface extends Interface {
             new ColoredBackground(NotifX - 75, NotifY).withSize(new Size(NotifW, NotifH)).withColor(new Colors(new Color(12, 25, 52), Color.BLACK)).withTransparency(0.4f).withBorders(true).draw();
             new TexturedBackground(NotifX - 73, NotifY + 3).withSize(new Size(20, 20)).setResource(Resource.PLACEHOLDER).draw();
             new Text(waypoint.getTitle(), NotifX - 50, NotifY + 7).withSize(TextSize.SMALL).draw();
-            new Text("&a" + waypoint.getType() + "", NotifX - 47, NotifY + 16).withSize(TextSize.SMALL).draw();
+            new Text("&a" + waypoint.getType(), NotifX - 47, NotifY + 16).withSize(TextSize.SMALL).draw();
             new Text("X", NotifX + 63, NotifY + 2).withSize(TextSize.SMALL).draw();
             
             nb++;
@@ -152,11 +154,15 @@ public class WaypointInterface extends Interface {
         new ColoredBackground(40, this.getHeight() - 25).withSize(new Size(135, 20)).withColor(new Colors(new Color(12, 25, 52))).withBorders(true).withTransparency(0.9F).draw();
         new Text("&cFactions", 45, this.getHeight() - 19).draw();
         
+        new ColoredBackground(200, this.getSplitHeight() - 100).withSize(new Size(135, 200)).withColor(Colors.DARK_RED).withBorders(true).withTransparency(0.7F).draw();
+        
 	}
 
 	@Override
 	public void updateInterface() {
 
+		if (this.transparency < 0.7F)
+			this.transparency = transparency + 0.05F; 
 		
 	}
 
