@@ -2,6 +2,8 @@ package com.synezia.client.interfaces;
 
 import java.util.List;
 
+import org.lwjgl.input.Keyboard;
+
 import com.google.common.collect.Lists;
 import com.synezia.client.components.Component;
 import com.synezia.client.components.SizedComponent;
@@ -21,12 +23,15 @@ import net.minecraft.client.gui.GuiTextField;
 
 public abstract class Interface extends GuiScreen {
 	
+	private boolean canClose = true;
+	
 	/**
 	 * Components
 	 */
 	
 	@Getter private List<Component> components = Lists.newArrayList();
 	@Getter private Button currentButton;
+	@Getter private TextFieldComponent currentTextField;
 	
 	@Override
 	public void initGui() {
@@ -34,6 +39,8 @@ public abstract class Interface extends GuiScreen {
 		
 		if(!this.components.isEmpty()) 
 			this.components.clear();
+		
+		Keyboard.enableRepeatEvents((boolean)true);
 		
 		this.initializeInterface();
 	}
@@ -73,9 +80,15 @@ public abstract class Interface extends GuiScreen {
     
     @Override
     public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
+    	for (Component item : components)
+    		if (item instanceof TextFieldComponent) 
+    			((TextFieldComponent) item).getField().setFocused(false);
+
         for (Component component : components) {
             SizedComponent sized;
-            if (!component.isActive() || !component.isVisible() || !(component instanceof SizedComponent) || !(sized = (SizedComponent)component).isPressed() || mouseButton != 0) continue;
+            if (!component.isActive() || !component.isVisible() || !(component instanceof SizedComponent) || !(sized = (SizedComponent)component).isPressed() || mouseButton != 0) 
+            	continue;
+            
             if (sized instanceof Button) {
                 Button button;
                 this.currentButton = button = (Button)sized;
@@ -86,25 +99,28 @@ public abstract class Interface extends GuiScreen {
                 }
                 continue;
             }
-            if (!(component instanceof TextFieldComponent)) continue;
-            TextFieldComponent componentField = (TextFieldComponent)component;
-            GuiTextField field = componentField.getField();
-            field.mouseClicked(mouseX, mouseY, mouseButton);
+            
+            if (component instanceof TextFieldComponent) {
+                TextFieldComponent componentField = (TextFieldComponent)component;
+                GuiTextField field = componentField.getField();
+                field.mouseClicked(mouseX, mouseY, mouseButton);
+            }
         }
     }
     
     @Override
     protected void keyTyped(char carracter, int value) {
+    	if (this.canClose) 
+            super.keyTyped(carracter, value);
+        
         for (Component component : this.components) {
             if (!(component instanceof TextFieldComponent)) 
             	continue;
             TextFieldComponent componentField = (TextFieldComponent)component;
             GuiTextField field = componentField.getField();
             
-            if (field.getText().equalsIgnoreCase(componentField.getDefaultText())) 
-                field.setText("");
-            
-            field.textboxKeyTyped(carracter, value);
+            if (field.isFocused())
+            	field.textboxKeyTyped(carracter, value);
             
             ActionField actionField = componentField.getAction();
             if (actionField == null) 

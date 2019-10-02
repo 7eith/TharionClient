@@ -48,10 +48,18 @@ public class WaypointManager
 	}
 	
     public Waypoint getWaypointAt(Integer posX, Integer posY, Integer posZ) {
-    	return waypoints.stream()
+    	
+    	if (waypoints.stream().filter(w -> w.getPosX() == posX && w.getPosY() == posY && w.getPosZ() == posZ).findFirst().isPresent())
+    		return waypoints.stream()
     			.filter(w -> w.getPosX() == posX && w.getPosY() == posY && w.getPosZ() == posZ)
-    			.findFirst()
-                .get();
+    			.findFirst().get();
+    	
+    	return null;
+    }
+    
+    public Boolean hasWaypointAt(Integer posX, Integer posY, Integer posZ)
+    {
+    	return waypoints.stream().filter(w -> w.getPosX() == posX && w.getPosY() == posY && w.getPosZ() == posZ).findFirst().isPresent();
     }
 
 	
