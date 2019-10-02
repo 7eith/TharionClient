@@ -11,6 +11,10 @@ import com.synezia.client.utilities.Colors;
  */
 
 public class DefaultType extends Type {
+	
+	private Boolean border;
+	
+	public DefaultType withBorder() { this.border = true; return this; }
 
 	@Override
 	public void draw() {
@@ -20,6 +24,7 @@ public class DefaultType extends Type {
         
         rect.withColor(new Colors(color));
         rect.withSize(this.getButton().getSize());
+        rect.withBorders(this.border);
         rect.draw();
 	}
 
