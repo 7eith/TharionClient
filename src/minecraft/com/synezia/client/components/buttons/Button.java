@@ -48,7 +48,6 @@ public class Button extends SizedComponent {
 	}
 	
 	public Button setSize(Integer xSize, Integer ySize) { this.setSize(new Size(xSize, ySize)); return this;}
-	public Button setSize(Size size) {this.size = size; return this;}
 	public Button setTitle(String title) {this.title = title; return this;}
 	public Button setType(Type type) {this.type = type; this.type.setButton(this); return this;}
 	public Button setInformations(Informations informations) {this.informations = informations; this.informations.setButton(this); return this;}

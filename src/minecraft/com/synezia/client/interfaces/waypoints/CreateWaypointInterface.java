@@ -6,9 +6,15 @@ import com.synezia.client.components.Size;
 import com.synezia.client.components.backgrounds.ColoredBackground;
 import com.synezia.client.components.texts.Text;
 import com.synezia.client.components.texts.TextSize;
+import com.synezia.client.components.texts.fields.TextFieldComponent;
 import com.synezia.client.interfaces.Interface;
 import com.synezia.client.utilities.Colors;
 import com.synezia.client.waypoints.WaypointManager;
+
+/**
+ * @author Snkh
+ *	30 sept. 2019
+ */
 
 public class CreateWaypointInterface extends Interface {
 	
@@ -23,7 +29,9 @@ public class CreateWaypointInterface extends Interface {
 	public void initializeInterface() 
 	{
 		
-		
+        TextFieldComponent nameField = new TextFieldComponent("&cWaypoint #" + manager.getWaypoints().size() + 1, new Size(115, 25), this.getSplitWidth() - 60, this.getSplitHeight() - 58)
+        		.setFieldSize(120, 25);
+        this.addComponent(nameField);
 	}
 
 	@Override
@@ -60,7 +68,7 @@ public class CreateWaypointInterface extends Interface {
 			.withTransparency(1F)
 			.draw();
 		
-		new Text("&cFactions LNZ", this.getSplitWidth() - 60, this.getSplitHeight() - 58).draw();
+//		new Text("&cFactions LNZ", this.getSplitWidth() - 60, this.getSplitHeight() - 58).draw();
 		
 		// Waypoint : PosX
 		new Text("* Position (X)", this.getSplitWidth() - 64, this.getSplitHeight() - 35).withSize(TextSize.SMALL).draw();

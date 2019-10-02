@@ -1,8 +1,14 @@
 package net.minecraft.client.gui;
 
+import org.lwjgl.opengl.GL11;
+
+import com.synezia.client.utilities.Utilities;
+
+import lombok.Getter;
+import lombok.Setter;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.ChatAllowedCharacters;
-import org.lwjgl.opengl.GL11;
 
 public class GuiTextField extends Gui
 {
@@ -11,8 +17,8 @@ public class GuiTextField extends Gui
     private final int yPosition;
 
     /** The width of this text field. */
-    private final int width;
-    private final int height;
+    @Setter private int width;
+    @Setter private int height;
 
     /** Has the current text being edited on the textbox. */
     private String text = "";
@@ -48,7 +54,11 @@ public class GuiTextField extends Gui
 
     /** True if this textbox is visible */
     private boolean visible = true;
-    private static final String __OBFID = "CL_00000670";
+
+    public GuiTextField(String defaultText, int posX, int posY, int width, int height) {
+        this(Minecraft.getMinecraft().fontRenderer, posX, posY, width, height);
+        this.setText(Utilities.color(defaultText));
+    }
 
     public GuiTextField(FontRenderer p_i46392_1_, int p_i46392_2_, int p_i46392_3_, int p_i46392_4_, int p_i46392_5_)
     {

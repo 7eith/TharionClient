@@ -7,9 +7,12 @@ import com.synezia.client.components.Component;
 import com.synezia.client.components.SizedComponent;
 import com.synezia.client.components.buttons.Button;
 import com.synezia.client.components.buttons.actions.Action;
+import com.synezia.client.components.texts.fields.ActionField;
+import com.synezia.client.components.texts.fields.TextFieldComponent;
 
 import lombok.Getter;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.GuiTextField;
 
 /**
  * @author Snkh
@@ -50,6 +53,13 @@ public abstract class Interface extends GuiScreen {
 	public void updateScreen() {
 		super.updateScreen();
 		
+		for (Component component : this.components) {
+            if (!(component instanceof TextFieldComponent)) continue;
+            TextFieldComponent componentField = (TextFieldComponent)component;
+            GuiTextField field = componentField.getField();
+            field.updateCursorCounter();
+        }
+		
 		this.updateInterface();
 	}
 	
@@ -76,6 +86,30 @@ public abstract class Interface extends GuiScreen {
                 }
                 continue;
             }
+            if (!(component instanceof TextFieldComponent)) continue;
+            TextFieldComponent componentField = (TextFieldComponent)component;
+            GuiTextField field = componentField.getField();
+            field.mouseClicked(mouseX, mouseY, mouseButton);
+        }
+    }
+    
+    @Override
+    protected void keyTyped(char carracter, int value) {
+        for (Component component : this.components) {
+            if (!(component instanceof TextFieldComponent)) 
+            	continue;
+            TextFieldComponent componentField = (TextFieldComponent)component;
+            GuiTextField field = componentField.getField();
+            
+            if (field.getText().equalsIgnoreCase(componentField.getDefaultText())) 
+                field.setText("");
+            
+            field.textboxKeyTyped(carracter, value);
+            
+            ActionField actionField = componentField.getAction();
+            if (actionField == null) 
+            	continue;
+            actionField.textUpdate(field.getText());
         }
     }
 	

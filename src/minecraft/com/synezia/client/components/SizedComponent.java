@@ -10,7 +10,7 @@ import lombok.Setter;
  *	25 jul. 2018
  */
 
-@Getter 
+@Getter @Setter 
 public abstract class SizedComponent extends Component {
 	
 	public Size size;
