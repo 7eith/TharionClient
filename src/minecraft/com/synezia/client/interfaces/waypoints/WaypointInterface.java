@@ -52,8 +52,7 @@ public class WaypointInterface extends Interface {
 	 * via un combo commande qui send un packet waypoint et un tellraw api (chat component ou on peut cliquer), mais c'est toujours cool comme nouveautes!
 	 * 
 	 * TODO: after, BONUS; faire un packet de waypoints pour par example recuperer les waypoints in game en se connectant, par example un waypoint f home, ap etc defini 
-	 * par le chef de factions ou quoi.
-	 * 
+	 * par le chef de factions ou quoi
 	 */
 	
 	private WaypointManager waypointsManager;
