@@ -1221,10 +1221,6 @@ public abstract class EntityLivingBase extends Entity
         }
         else
         {
-            if (this instanceof EntityZombie)
-            {
-                p_70672_2_ = p_70672_2_;
-            }
 
             int var3;
             int var4;

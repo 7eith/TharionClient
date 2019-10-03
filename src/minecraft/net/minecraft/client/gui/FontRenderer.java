@@ -228,11 +228,6 @@ public class FontRenderer implements IResourceManagerReloadListener
                     }
                 }
 
-                if (k == 65)
-                {
-                    k = k;
-                }
-
                 if (k == 32)
                 {
                     if (charW <= 8)

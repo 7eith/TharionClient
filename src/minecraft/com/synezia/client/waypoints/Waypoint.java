@@ -35,6 +35,7 @@ public class Waypoint {
 	}
 	
 	public Waypoint withColor(Colors color) { this.color = color; return this; }
+	public Waypoint toggleActive() { this.active = isActive() ? false : true; return this; }
 	
     public double getDistanceToAnEntity(Entity entity) {
         double distX = (double)this.posX - entity.posX;

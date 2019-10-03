@@ -10,8 +10,11 @@ import com.synezia.client.components.backgrounds.TexturedBackground;
 import com.synezia.client.components.buttons.Button;
 import com.synezia.client.components.buttons.actions.Action;
 import com.synezia.client.components.buttons.actions.DisplayScreenAction;
+import com.synezia.client.components.buttons.actions.WaypointClickAction;
 import com.synezia.client.components.buttons.informations.EscapeButtonInformations;
+import com.synezia.client.components.buttons.informations.WaypointInformations;
 import com.synezia.client.components.buttons.type.IconType;
+import com.synezia.client.components.buttons.type.WaypointButtonType;
 import com.synezia.client.components.texts.Text;
 import com.synezia.client.components.texts.TextSize;
 import com.synezia.client.interfaces.Interface;
@@ -31,14 +34,8 @@ import net.minecraft.util.MathHelper;
 public class WaypointInterface extends Interface {
 	
 	/**
-	 * TODO: Stop display waypoints if gui scale is not good (response fuck), par example, on get la taille de l'ecran, on enleve la taille de la barre du title, 
-	 * et on enleve la taille du button d'en bas, puis on calcule combien d'item on peut poser dedans, par example pour du 1600 * 900 = 15 avant un breakpoint
 	 * 
 	 * TODO: Systeme de tri, on doit pouvoir trier les waypoints par type, player event clan factions trade others, 
-	 * 
-	 * TODO: Systeme de clique, on doit en cliquant sur un waypoints pouvoir afficher les informations du waypoint, pos type color etc...
-	 * on doit aussi pouvoir en fesant CTRL Click donc keyEnter (event), activer et desactiver le waypoints, qu'il soit possible ou pas de le voir.
-	 * en appuyant sur la croix on supprime le waypoints, (on quitte l'interface ?) et on dis dans le chat que ce waypoint est bien supprimer.
 	 * 
 	 * TODO: Systeme d'ajout de waypoints, on doit pouvoir ajouter un waypoint avec une couleur predefini pour chaque type, factions par exemple en bleu, et pouvoir la modifier
 	 * via un systeme RGB qui creer une nouvelle colors. Pour ce systeme d'ajout creer un mini menu sur la droite, avec le titre 'Ajout d'un Waypoint', 
@@ -59,11 +56,20 @@ public class WaypointInterface extends Interface {
 	private List<Waypoint> waypoints;
 	
 	private float transparency = 0.0F;
+	private String message;
 	
 	public WaypointInterface() 
 	{
 		this.waypointsManager = Client.i.getWaypointsManager();
 		this.waypoints = waypointsManager.getWaypoints();
+		this.message = "&8[&9Informations&8] &9Cliquer sur un waypoint pour le desactiver et cliquer en maintenant CTRL pour le supprimer!";
+	}
+	
+	public WaypointInterface(String message)
+	{
+		this();
+		this.message = message;
+		this.transparency = 0.7F;
 	}
 
 	@Override
@@ -84,7 +90,7 @@ public class WaypointInterface extends Interface {
         addWaypoint.setSize(20, 20);
         addWaypoint.setType(new IconType(Resource.HOME));
         addWaypoint.setInformations(new EscapeButtonInformations(9, 73));
-        addWaypoint.setTitle("Add Waypoint");
+        addWaypoint.setTitle("Cr\u00e9er un waypoint");
         addWaypoint.addAction(new Action() {
 			
 			@Override
@@ -97,64 +103,52 @@ public class WaypointInterface extends Interface {
 				mc.displayGuiScreen(null);
 			}
 		});
+
+        Integer count = 0;
+        Integer supportedWaypoint = (this.getHeight() - 15) / 25; // taille total diviser par la taille d'un waypoint
         
-        addWaypoint.enable();
+        for (Waypoint waypoint : this.waypointsManager.getWaypoints())
+        {
+            Button component = new Button(35, (15) + 26 * count);
+            
+            component.setSize(145, 25);
+            component.setType(new WaypointButtonType());
+            component.setInformations(new WaypointInformations(waypoints.get(count)));
+            component.addAction(new WaypointClickAction(count));
+            
+            if (supportedWaypoint > count)
+            	this.addComponent("waypoint" + count, component);
+        	
+        	count++;
+        }
         
         this.addComponent(home);
-        this.addComponent(addWaypoint);
 	}
 
 	@Override
 	public void drawComponents() {
-		
         new ColoredBackground().withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withTransparency(transparency).draw();
-        
-        /**
-         * Calculs helpful
-         */
-        
-        Integer width = Interface.getWidth();
-        Integer height = Interface.getHeight();
         
         /** 
          * Sidebar
          */
         
-        new ColoredBackground().withSize(new Size(35, height)).withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withTransparency(0.9F).draw();
+        new ColoredBackground().withSize(new Size(35, this.getHeight())).withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withTransparency(0.9F).draw();
         
-        // Siderbar right 
+        /**
+         * Waypoints 
+         */
+        
+        new ColoredBackground(35, 15).withSize(new Size(145, this.getHeight() - 15)).withColor(new Colors(Color.GRAY, Color.BLACK)).withBorders(true).withTransparency(0.35F).draw(); // Background
+        new ColoredBackground(35, 0).withSize(new Size(145, 15)).withColor(new Colors(new Color(44,56,126), Color.BLACK)).withTransparency(0.85F).draw(); // Title? 
+        new Text("&7• &9Waypoints &7[&9" + this.waypoints.size() + "&7]", 38, 4).draw();
+        
+        /**
+         * TopBar
+         */
         
         new ColoredBackground(180, 0).withSize(new Size(width, 15)).withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withTransparency(0.6F).draw(); // Background
-//        new Text("&7• &cOptions > Mods > Waypoints", 183, 4).draw();
-//        new Text("X", width - 10, 4).draw();
-        
-        new ColoredBackground(35, 0).withSize(new Size(145, height)).withColor(new Colors(Color.GRAY, Color.BLACK)).withBorders(true).withTransparency(0.35F).draw(); // Background
-        new ColoredBackground(35, 0).withSize(new Size(145, 15)).withColor(new Colors(new Color(44,56,126), Color.BLACK)).withTransparency(0.85F).draw(); // Title? 
-        new Text("&7• &9Waypoints &4[" + this.waypoints.size() + "]", 38, 4).draw();
-        
-        // Integer nb = 0; nb < 12; nb++
-        Integer nb = 0;
-        for(Waypoint waypoint : waypoints) {
-        	
-            int NotifX = 110;
-            int NotifY = (15) + 26 * nb; // ?
-            int NotifW = 145;
-            int NotifH = 25;
-            
-            new ColoredBackground(NotifX - 75, NotifY).withSize(new Size(NotifW, NotifH)).withColor(new Colors(new Color(12, 25, 52), Color.BLACK)).withTransparency(0.4f).withBorders(true).draw();
-            new TexturedBackground(NotifX - 73, NotifY + 3).withSize(new Size(20, 20)).setResource(Resource.PLACEHOLDER).draw();
-            new Text(waypoint.getTitle(), NotifX - 50, NotifY + 7).withSize(TextSize.SMALL).draw();
-            new Text("&a" + waypoint.getType(), NotifX - 47, NotifY + 16).withSize(TextSize.SMALL).draw();
-            new Text("X", NotifX + 63, NotifY + 2).withSize(TextSize.SMALL).draw();
-            
-            nb++;
-        }
-        
-        new ColoredBackground(40, this.getHeight() - 25).withSize(new Size(135, 20)).withColor(new Colors(new Color(12, 25, 52))).withBorders(true).withTransparency(0.9F).draw();
-        new Text("&cFactions", 45, this.getHeight() - 19).draw();
-        
-        new ColoredBackground(200, this.getSplitHeight() - 100).withSize(new Size(135, 200)).withColor(Colors.DARK_RED).withBorders(true).withTransparency(0.7F).draw();
-        
+        new Text(message, 183, 4).draw();
 	}
 
 	@Override
