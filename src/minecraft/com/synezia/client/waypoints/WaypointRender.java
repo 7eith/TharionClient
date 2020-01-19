@@ -149,18 +149,14 @@ public class WaypointRender extends Render {
                     } else {
                         item = new ItemStack(Items.paper);
                         itemRenderer = new RenderItem();
-                        RenderHelper.enableGUIStandardItemLighting();
                         itemRenderer.renderItemIntoGUI(this.fontRenderer, this.minecraft.getTextureManager(), item, - width, -4);
-                        RenderHelper.disableStandardItemLighting();
                         new Text(waypoint.getTitle(), widthPos + (- width), -2).withSize(TextSize.LARGE).draw();
                     }
                 } else if (waypoint.getType() == WaypointType.PLAYER) {
                     new Text(name, widthPos + (- width), 0).draw();
                     item = new ItemStack(Items.diamond_axe);
                     itemRenderer = new RenderItem();
-                    RenderHelper.enableGUIStandardItemLighting();
                     itemRenderer.renderItemIntoGUI(this.fontRenderer, this.minecraft.getTextureManager(), item, - width, -4);
-                    RenderHelper.disableStandardItemLighting();
                 } else {
                     new Text(name, widthPos + (- width), 0).draw();
                 }
