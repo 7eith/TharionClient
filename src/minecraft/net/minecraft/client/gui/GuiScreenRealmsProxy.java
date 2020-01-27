@@ -219,9 +219,9 @@ public class GuiScreenRealmsProxy extends GuiScreen
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    public void keyTyped(char p_73869_1_, int p_73869_2_)
+    public void keyTyped(char typedChar, int keyCode)
     {
-        this.field_154330_a.keyPressed(p_73869_1_, p_73869_2_);
+        this.field_154330_a.keyPressed(typedChar, keyCode);
     }
 
     public void confirmClicked(boolean p_73878_1_, int p_73878_2_)

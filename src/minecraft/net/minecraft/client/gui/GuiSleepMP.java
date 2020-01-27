@@ -20,15 +20,15 @@ public class GuiSleepMP extends GuiChat
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
-        if (p_73869_2_ == 1)
+        if (keyCode == 1)
         {
             this.func_146418_g();
         }
-        else if (p_73869_2_ != 28 && p_73869_2_ != 156)
+        else if (keyCode != 28 && keyCode != 156)
         {
-            super.keyTyped(p_73869_1_, p_73869_2_);
+            super.keyTyped(typedChar, keyCode);
         }
         else
         {

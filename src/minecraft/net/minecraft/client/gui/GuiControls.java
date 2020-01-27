@@ -119,17 +119,17 @@ public class GuiControls extends GuiScreen
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
         if (this.buttonId != null)
         {
-            if (p_73869_2_ == 1)
+            if (keyCode == 1)
             {
                 this.options.setOptionKeyBinding(this.buttonId, 0);
             }
             else
             {
-                this.options.setOptionKeyBinding(this.buttonId, p_73869_2_);
+                this.options.setOptionKeyBinding(this.buttonId, keyCode);
             }
 
             this.buttonId = null;
@@ -138,7 +138,7 @@ public class GuiControls extends GuiScreen
         }
         else
         {
-            super.keyTyped(p_73869_1_, p_73869_2_);
+            super.keyTyped(typedChar, keyCode);
         }
     }
 

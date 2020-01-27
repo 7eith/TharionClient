@@ -81,16 +81,16 @@ public class GuiAchievements extends GuiScreen implements IProgressMeter
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
-        if (p_73869_2_ == this.mc.gameSettings.keyBindInventory.getKeyCode())
+        if (keyCode == this.mc.gameSettings.keyBindInventory.getKeyCode())
         {
             this.mc.displayGuiScreen((GuiScreen)null);
             this.mc.setIngameFocus();
         }
         else
         {
-            super.keyTyped(p_73869_1_, p_73869_2_);
+            super.keyTyped(typedChar, keyCode);
         }
     }
 

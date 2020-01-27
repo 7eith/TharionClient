@@ -298,7 +298,7 @@ public class GuiContainerCreative extends InventoryEffectRenderer
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
         if (selectedTabIndex != CreativeTabs.tabAllSearch.getTabIndex())
         {
@@ -308,7 +308,7 @@ public class GuiContainerCreative extends InventoryEffectRenderer
             }
             else
             {
-                super.keyTyped(p_73869_1_, p_73869_2_);
+                super.keyTyped(typedChar, keyCode);
             }
         }
         else
@@ -319,15 +319,15 @@ public class GuiContainerCreative extends InventoryEffectRenderer
                 this.searchField.setText("");
             }
 
-            if (!this.checkHotbarKeys(p_73869_2_))
+            if (!this.checkHotbarKeys(keyCode))
             {
-                if (this.searchField.textboxKeyTyped(p_73869_1_, p_73869_2_))
+                if (this.searchField.textboxKeyTyped(typedChar, keyCode))
                 {
                     this.updateCreativeSearch();
                 }
                 else
                 {
-                    super.keyTyped(p_73869_1_, p_73869_2_);
+                    super.keyTyped(typedChar, keyCode);
                 }
             }
         }

@@ -678,22 +678,22 @@ public abstract class GuiContainer extends GuiScreen
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
-        if (p_73869_2_ == 1 || p_73869_2_ == this.mc.gameSettings.keyBindInventory.getKeyCode())
+        if (keyCode == 1 || keyCode == this.mc.gameSettings.keyBindInventory.getKeyCode())
         {
             this.mc.thePlayer.closeScreen();
         }
 
-        this.checkHotbarKeys(p_73869_2_);
+        this.checkHotbarKeys(keyCode);
 
         if (this.theSlot != null && this.theSlot.getHasStack())
         {
-            if (p_73869_2_ == this.mc.gameSettings.keyBindPickBlock.getKeyCode())
+            if (keyCode == this.mc.gameSettings.keyBindPickBlock.getKeyCode())
             {
                 this.handleMouseClick(this.theSlot, this.theSlot.slotNumber, 0, 3);
             }
-            else if (p_73869_2_ == this.mc.gameSettings.keyBindDrop.getKeyCode())
+            else if (keyCode == this.mc.gameSettings.keyBindDrop.getKeyCode())
             {
                 this.handleMouseClick(this.theSlot, this.theSlot.slotNumber, isCtrlKeyDown() ? 1 : 0, 4);
             }

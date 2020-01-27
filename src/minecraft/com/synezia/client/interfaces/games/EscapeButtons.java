@@ -4,12 +4,16 @@ import java.util.List;
 
 import com.google.common.collect.Lists;
 import com.synezia.client.components.Size;
+import com.synezia.client.components.backgrounds.TexturedBackground;
 import com.synezia.client.components.buttons.Button;
 import com.synezia.client.components.buttons.actions.Action;
 import com.synezia.client.components.buttons.actions.DisplayScreenAction;
 import com.synezia.client.components.buttons.informations.EscapeButtonInformations;
 import com.synezia.client.components.buttons.informations.Informations;
 import com.synezia.client.components.buttons.type.IconType;
+import com.synezia.client.components.texts.Text;
+import com.synezia.client.components.texts.TextSize;
+import com.synezia.client.interfaces.waypoints.WaypointInterface;
 import com.synezia.client.resources.Resource;
 
 import lombok.Data;
@@ -36,9 +40,22 @@ public class EscapeButtons {
         home.setTitle("Accueil");
         home.addAction(new DisplayScreenAction(null));
         
+        home.setId("Home");
         home.enable();
         
         this.buttons.add(home);
-		
+	
+        Button waypoints = new Button(8, 50);
+        
+        waypoints.setSize(this.getDefaultSize());
+        waypoints.setType(new IconType(Resource.PLACEHOLDER));
+        waypoints.setInformations(new EscapeButtonInformations(6, 71));
+        waypoints.setTitle("Waypoints");
+        waypoints.addAction(new DisplayScreenAction(new WaypointInterface()));
+ 
+        waypoints.setId("Waypoints");
+        waypoints.enable();
+  
+        this.buttons.add(waypoints);
 	}
 }

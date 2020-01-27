@@ -245,12 +245,12 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
         int var3 = this.field_146803_h.func_148193_k();
         GuiListExtended.IGuiListEntry var4 = var3 < 0 ? null : this.field_146803_h.getListEntry(var3);
 
-        if (p_73869_2_ == 63)
+        if (keyCode == 63)
         {
             this.func_146792_q();
         }
@@ -258,7 +258,7 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
         {
             if (var3 >= 0)
             {
-                if (p_73869_2_ == 200)
+                if (keyCode == 200)
                 {
                     if (isShiftKeyDown())
                     {
@@ -293,7 +293,7 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
                         this.func_146790_a(-1);
                     }
                 }
-                else if (p_73869_2_ == 208)
+                else if (keyCode == 208)
                 {
                     if (isShiftKeyDown())
                     {
@@ -328,9 +328,9 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
                         this.func_146790_a(-1);
                     }
                 }
-                else if (p_73869_2_ != 28 && p_73869_2_ != 156)
+                else if (keyCode != 28 && keyCode != 156)
                 {
-                    super.keyTyped(p_73869_1_, p_73869_2_);
+                    super.keyTyped(typedChar, keyCode);
                 }
                 else
                 {
@@ -339,7 +339,7 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
             }
             else
             {
-                super.keyTyped(p_73869_1_, p_73869_2_);
+                super.keyTyped(typedChar, keyCode);
             }
         }
     }

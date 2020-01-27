@@ -77,11 +77,11 @@ public class GuiFlatPresets extends GuiScreen
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
-        if (!this.field_146433_u.textboxKeyTyped(p_73869_1_, p_73869_2_))
+        if (!this.field_146433_u.textboxKeyTyped(typedChar, keyCode))
         {
-            super.keyTyped(p_73869_1_, p_73869_2_);
+            super.keyTyped(typedChar, keyCode);
         }
     }
 

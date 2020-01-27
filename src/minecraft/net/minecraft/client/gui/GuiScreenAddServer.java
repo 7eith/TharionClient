@@ -80,18 +80,18 @@ public class GuiScreenAddServer extends GuiScreen
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
-        this.field_146309_g.textboxKeyTyped(p_73869_1_, p_73869_2_);
-        this.field_146308_f.textboxKeyTyped(p_73869_1_, p_73869_2_);
+        this.field_146309_g.textboxKeyTyped(typedChar, keyCode);
+        this.field_146308_f.textboxKeyTyped(typedChar, keyCode);
 
-        if (p_73869_2_ == 15)
+        if (keyCode == 15)
         {
             this.field_146309_g.setFocused(!this.field_146309_g.isFocused());
             this.field_146308_f.setFocused(!this.field_146308_f.isFocused());
         }
 
-        if (p_73869_2_ == 28 || p_73869_2_ == 156)
+        if (keyCode == 28 || keyCode == 156)
         {
             this.actionPerformed((GuiButton)this.buttonList.get(0));
         }

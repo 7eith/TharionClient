@@ -18,6 +18,7 @@ import com.synezia.client.components.buttons.type.WaypointButtonType;
 import com.synezia.client.components.texts.Text;
 import com.synezia.client.components.texts.TextSize;
 import com.synezia.client.interfaces.Interface;
+import com.synezia.client.interfaces.games.EscapeButtons;
 import com.synezia.client.resources.Resource;
 import com.synezia.client.utilities.Colors;
 import com.synezia.client.waypoints.Waypoint;
@@ -34,6 +35,8 @@ import net.minecraft.util.MathHelper;
 public class WaypointInterface extends Interface {
 	
 	/**
+	 * 
+	 * TODO: LargeGUI Scall not responsive, why the fuck is that? 
 	 * 
 	 * TODO: Systeme de tri, on doit pouvoir trier les waypoints par type, player event clan factions trade others, 
 	 * 
@@ -55,7 +58,7 @@ public class WaypointInterface extends Interface {
 	private WaypointManager waypointsManager;
 	private List<Waypoint> waypoints;
 	
-	private float transparency = 0.0F;
+	private float transparency = 0.7F;
 	private String message;
 	
 	public WaypointInterface() 
@@ -75,34 +78,18 @@ public class WaypointInterface extends Interface {
 	@Override
 	public void initializeInterface() 
 	{
-        Button home = new Button(7, 15);
+		new EscapeButtons().getButtons().stream().forEach(b -> this.addComponent(b.getId(), b));
         
-        home.setSize(20, 20);
-        home.setType(new IconType(Resource.HOME));
-        home.setInformations(new EscapeButtonInformations(9, 38));
-        home.setTitle("Accueil");
-        home.addAction(new DisplayScreenAction(null));
-        
-        home.enable();
-        
-        Button addWaypoint = new Button(7, 50);
+        Button addWaypoint = new Button(7, 80);
         
         addWaypoint.setSize(20, 20);
-        addWaypoint.setType(new IconType(Resource.HOME));
-        addWaypoint.setInformations(new EscapeButtonInformations(9, 73));
-        addWaypoint.setTitle("Cr\u00e9er un waypoint");
-        addWaypoint.addAction(new Action() {
-			
-			@Override
-			public void execute() {
-				
-		        int x = MathHelper.floor_double(mc.thePlayer.posX);
-		        int y = MathHelper.floor_double(mc.thePlayer.posY);
-		        int z = MathHelper.floor_double(mc.thePlayer.posZ);
-				waypoints.add(new Waypoint(WaypointType.PLAYER, "&eCaserne de clan", x, y, z));
-				mc.displayGuiScreen(null);
-			}
-		});
+        addWaypoint.setType(new IconType(Resource.PLUS));
+        addWaypoint.setInformations(new EscapeButtonInformations(8, 103));
+        addWaypoint.setTitle("Ajouter");
+        addWaypoint.setId("WaypointSetter");
+        addWaypoint.addAction(new DisplayScreenAction(new CreateWaypointInterface()));
+        
+        this.addComponent(addWaypoint);
 
         Integer count = 0;
         Integer supportedWaypoint = (this.getHeight() - 15) / 25; // taille total diviser par la taille d'un waypoint
@@ -121,8 +108,6 @@ public class WaypointInterface extends Interface {
         	
         	count++;
         }
-        
-        this.addComponent(home);
 	}
 
 	@Override

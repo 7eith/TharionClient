@@ -50,6 +50,7 @@ import com.google.common.util.concurrent.ListenableFutureTask;
 import com.mojang.authlib.minecraft.MinecraftSessionService;
 import com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService;
 import com.synezia.client.Client;
+import com.synezia.client.interfaces.games.EscapeInterface;
 import com.synezia.client.waypoints.WaypointEntity;
 
 import io.netty.util.concurrent.GenericFutureListener;
@@ -1431,7 +1432,7 @@ public class Minecraft implements IPlayerUsage
     {
         if (this.currentScreen == null)
         {
-            this.displayGuiScreen(new GuiIngameMenu());
+            this.displayGuiScreen(new EscapeInterface());
 
             if (this.isSingleplayer() && !this.theIntegratedServer.getPublic())
             {

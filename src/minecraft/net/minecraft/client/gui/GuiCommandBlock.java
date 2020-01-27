@@ -108,15 +108,15 @@ public class GuiCommandBlock extends GuiScreen
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
-        this.commandTextField.textboxKeyTyped(p_73869_1_, p_73869_2_);
-        this.field_146486_g.textboxKeyTyped(p_73869_1_, p_73869_2_);
+        this.commandTextField.textboxKeyTyped(typedChar, keyCode);
+        this.field_146486_g.textboxKeyTyped(typedChar, keyCode);
         this.doneBtn.enabled = this.commandTextField.getText().trim().length() > 0;
 
-        if (p_73869_2_ != 28 && p_73869_2_ != 156)
+        if (keyCode != 28 && keyCode != 156)
         {
-            if (p_73869_2_ == 1)
+            if (keyCode == 1)
             {
                 this.actionPerformed(this.cancelBtn);
             }

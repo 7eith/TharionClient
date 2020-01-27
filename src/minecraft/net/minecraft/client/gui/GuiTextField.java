@@ -221,10 +221,10 @@ public class GuiTextField extends Gui
      */
     public int getNthWordFromPos(int p_146183_1_, int p_146183_2_)
     {
-        return this.func_146197_a(p_146183_1_, this.getCursorPosition(), true);
+        return this.getNthWordFromPosWS(p_146183_1_, this.getCursorPosition(), true);
     }
 
-    public int func_146197_a(int p_146197_1_, int p_146197_2_, boolean p_146197_3_)
+    public int getNthWordFromPosWS(int p_146197_1_, int p_146197_2_, boolean p_146197_3_)
     {
         int var4 = p_146197_2_;
         boolean var5 = p_146197_1_ < 0;

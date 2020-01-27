@@ -71,12 +71,12 @@ public class GuiRenameWorld extends GuiScreen
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
-        this.field_146583_f.textboxKeyTyped(p_73869_1_, p_73869_2_);
+        this.field_146583_f.textboxKeyTyped(typedChar, keyCode);
         ((GuiButton)this.buttonList.get(0)).enabled = this.field_146583_f.getText().trim().length() > 0;
 
-        if (p_73869_2_ == 28 || p_73869_2_ == 156)
+        if (keyCode == 28 || keyCode == 156)
         {
             this.actionPerformed((GuiButton)this.buttonList.get(0));
         }

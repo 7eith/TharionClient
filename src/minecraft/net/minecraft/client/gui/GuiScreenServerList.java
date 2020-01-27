@@ -70,13 +70,13 @@ public class GuiScreenServerList extends GuiScreen
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
-        if (this.field_146302_g.textboxKeyTyped(p_73869_1_, p_73869_2_))
+        if (this.field_146302_g.textboxKeyTyped(typedChar, keyCode))
         {
             ((GuiButton)this.buttonList.get(0)).enabled = this.field_146302_g.getText().length() > 0 && this.field_146302_g.getText().split(":").length > 0;
         }
-        else if (p_73869_2_ == 28 || p_73869_2_ == 156)
+        else if (keyCode == 28 || keyCode == 156)
         {
             this.actionPerformed((GuiButton)this.buttonList.get(0));
         }

@@ -154,7 +154,7 @@ public class WaypointRender extends Render {
                     }
                 } else if (waypoint.getType() == WaypointType.PLAYER) {
                     new Text(name, widthPos + (- width), 0).draw();
-                    item = new ItemStack(Items.diamond_axe);
+                    item = new ItemStack(Items.skull);
                     itemRenderer = new RenderItem();
                     itemRenderer.renderItemIntoGUI(this.fontRenderer, this.minecraft.getTextureManager(), item, - width, -4);
                 } else {

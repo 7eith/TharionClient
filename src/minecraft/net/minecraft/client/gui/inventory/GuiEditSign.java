@@ -83,29 +83,29 @@ public class GuiEditSign extends GuiScreen
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
-        if (p_73869_2_ == 200)
+        if (keyCode == 200)
         {
             this.editLine = this.editLine - 1 & 3;
         }
 
-        if (p_73869_2_ == 208 || p_73869_2_ == 28 || p_73869_2_ == 156)
+        if (keyCode == 208 || keyCode == 28 || keyCode == 156)
         {
             this.editLine = this.editLine + 1 & 3;
         }
 
-        if (p_73869_2_ == 14 && this.tileSign.signText[this.editLine].length() > 0)
+        if (keyCode == 14 && this.tileSign.signText[this.editLine].length() > 0)
         {
             this.tileSign.signText[this.editLine] = this.tileSign.signText[this.editLine].substring(0, this.tileSign.signText[this.editLine].length() - 1);
         }
 
-        if (ChatAllowedCharacters.isAllowedCharacter(p_73869_1_) && this.tileSign.signText[this.editLine].length() < 15)
+        if (ChatAllowedCharacters.isAllowedCharacter(typedChar) && this.tileSign.signText[this.editLine].length() < 15)
         {
-            this.tileSign.signText[this.editLine] = this.tileSign.signText[this.editLine] + p_73869_1_;
+            this.tileSign.signText[this.editLine] = this.tileSign.signText[this.editLine] + typedChar;
         }
 
-        if (p_73869_2_ == 1)
+        if (keyCode == 1)
         {
             this.actionPerformed(this.doneBtn);
         }

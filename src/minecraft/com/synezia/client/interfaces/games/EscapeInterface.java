@@ -5,9 +5,14 @@ import java.awt.Color;
 import com.synezia.client.components.Size;
 import com.synezia.client.components.backgrounds.ColoredBackground;
 import com.synezia.client.components.backgrounds.TexturedBackground;
+import com.synezia.client.components.buttons.Button;
+import com.synezia.client.components.buttons.actions.DisplayScreenAction;
+import com.synezia.client.components.buttons.informations.EscapeButtonInformations;
+import com.synezia.client.components.buttons.type.IconType;
 import com.synezia.client.components.texts.Text;
 import com.synezia.client.components.texts.TextSize;
 import com.synezia.client.interfaces.Interface;
+import com.synezia.client.interfaces.waypoints.WaypointInterface;
 import com.synezia.client.resources.Resource;
 import com.synezia.client.utilities.Colors;
 
@@ -17,6 +22,8 @@ import com.synezia.client.utilities.Colors;
  */
 
 public class EscapeInterface extends Interface {
+	
+	private float transparency = 0.0F;
 
 	@Override
 	public void initializeInterface() {
@@ -27,10 +34,11 @@ public class EscapeInterface extends Interface {
 
 	@Override
 	public void drawComponents() {	
-		new TexturedBackground().setResource(Resource.BACKGROUND).draw();
-        this.drawGradientRect(0, 0, this.width, this.height, -2130706433, 16777215);
-        this.drawGradientRect(0, 0, this.width, this.height, 0, Integer.MIN_VALUE);
-        new ColoredBackground().withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withTransparency(0.6F).draw();
+//		new TexturedBackground().setResource(Resource.BACKGROUND).draw();
+//        this.drawGradientRect(0, 0, this.width, this.height, -2130706433, 16777215);
+//        this.drawGradientRect(0, 0, this.width, this.height, 0, Integer.MIN_VALUE);
+//        new ColoredBackground().withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withTransparency(0.4F).draw();
+        new ColoredBackground().withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withTransparency(transparency).draw();
         
         /**
          * Calculs helpful
@@ -47,33 +55,33 @@ public class EscapeInterface extends Interface {
         
 
 //        new Text("Accueil", 9, 38).setSize(TextSize.EXTRA_SMALL).draw();
+//        
+//        new TexturedBackground(8, 50).withSize(new Size(19, 18)).setResource(Resource.PLACEHOLDER).draw();
+//        new Text("Waypoints", 6, 71).withSize(TextSize.EXTRA_SMALL).draw();
         
-        new TexturedBackground(7, 50).withSize(new Size(20, 20)).setResource(Resource.ENVELOPE).draw();
-        new Text("Message", 7, 71).withSize(TextSize.EXTRA_SMALL).draw();
-        
-        new TexturedBackground(7, 82).withSize(new Size(20, 20)).setResource(Resource.WHITE_CLOCK).draw();
-        new Text("Evenement", 5, 105).withSize(TextSize.EXTRA_SMALL).draw();
-        
-        // Options 
-        
-        new TexturedBackground(7, 200).withSize(new Size(20, 20)).setResource(Resource.AUDIO).draw();
-        new Text("Audio", 11, 222).withSize(TextSize.EXTRA_SMALL).draw();
-        
-        new TexturedBackground(7, 230).withSize(new Size(20, 20)).setResource(Resource.MONITOR).draw();
-        new Text("Vidéo", 11, 252).withSize(TextSize.EXTRA_SMALL).draw();
-        
-        new TexturedBackground(7, 257).withSize(new Size(20, 20)).setResource(Resource.KEYBOARD).draw();
-        new Text("Commandes", 4, 277).withSize(TextSize.EXTRA_SMALL).draw();
-       
-        new TexturedBackground(7, 285).withSize(new Size(20, 20)).setResource(Resource.COG).draw();
-        new Text("Autres", 9, 307).withSize(TextSize.EXTRA_SMALL).draw();
+//        new TexturedBackground(7, 82).withSize(new Size(20, 20)).setResource(Resource.WHITE_CLOCK).draw();
+//        new Text("Evenement", 5, 105).withSize(TextSize.EXTRA_SMALL).draw();
+//        
+//        // Options 
+//        
+//        new TexturedBackground(7, 200).withSize(new Size(20, 20)).setResource(Resource.AUDIO).draw();
+//        new Text("Audio", 11, 222).withSize(TextSize.EXTRA_SMALL).draw();
+//        
+//        new TexturedBackground(7, 230).withSize(new Size(20, 20)).setResource(Resource.MONITOR).draw();
+//        new Text("Vidéo", 11, 252).withSize(TextSize.EXTRA_SMALL).draw();
+//        
+//        new TexturedBackground(7, 257).withSize(new Size(20, 20)).setResource(Resource.KEYBOARD).draw();
+//        new Text("Commandes", 4, 277).withSize(TextSize.EXTRA_SMALL).draw();
+//       
+//        new TexturedBackground(7, 285).withSize(new Size(20, 20)).setResource(Resource.COG).draw();
+//        new Text("Autres", 9, 307).withSize(TextSize.EXTRA_SMALL).draw();
         
         /**
          * Barre en haut
          */
         
         new ColoredBackground(180, 0).withSize(new Size(width, 15)).withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withTransparency(0.6F).draw(); // Background
-        new Text("&7>> &cJe suis un message inutile lalalala.", 183, 4).draw();
+        new Text("&7>> &cHello Snkh!", 183, 4).draw();
         new Text("X", width - 10, 4).draw();
         
         /**
@@ -101,37 +109,40 @@ public class EscapeInterface extends Interface {
         /**
          * Skin viewer / Informations
          */
-        
-        new ColoredBackground(190, 25).withSize(new Size(250, 250)).withColor(new Colors(new Color(12, 25, 52), Color.BLACK)).withBorders(true).withTransparency(0.35F).draw(); // Background
-        
-        new ColoredBackground(190, 25).withSize(new Size(250, 15)).withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withBorders(true).withTransparency(1F).draw(); // Title
-        new Text("Synzkah", 192, 29).draw();
-        new Text("X", 430, 29).draw();
-        
-        new ColoredBackground(195, 50).withSize(new Size(105, 180)).withColor(new Colors(Color.GRAY, Color.BLACK)).withBorders(true).withTransparency(0.35F).draw(); // Skin viewer
-        
-        new Text("&7• Pseudo: Synzkah", 305, 55).draw();
-        new Text("&7• INFO: Synzkah", 305, 65).draw();
-        new Text("&7• INFO: Synzkah", 305, 75).draw();
-        new Text("&7• INFO: Synzkah", 305, 85).draw();
-        new Text("&7• INFO: Synzkah", 305, 95).draw();
-        new Text("&7• INFO: Synzkah", 305, 105).draw();
-        new Text("&7• INFO: Synzkah", 305, 115).draw();
-        new Text("&7• INFO: Synzkah", 305, 125).draw();
-        
-        new Text("&7&m----------------------", 305, 135).draw();
-        
-        new Text("&cClassement(s): ", 305, 145).draw();
-        new Text("&cSolo: 1er", 315, 155).draw();
-        new Text("&cDuo: 10ème ", 315, 165).draw();
-        new Text("&cSquad: ??? ", 315, 175).draw();
-        new Text("&cFactions: ??? ", 315, 185).draw();
-        new Text("&cMoney: ???/? ", 315, 195).draw();
+//        
+//        new ColoredBackground(190, 25).withSize(new Size(250, 250)).withColor(new Colors(new Color(12, 25, 52), Color.BLACK)).withBorders(true).withTransparency(0.35F).draw(); // Background
+//        
+//        new ColoredBackground(190, 25).withSize(new Size(250, 15)).withColor(new Colors(new Color(12, 25, 52), new Color(8, 3, 37))).withBorders(true).withTransparency(1F).draw(); // Title
+//        new Text("Synzkah", 192, 29).draw();
+//        new Text("X", 430, 29).draw();
+//        
+//        new ColoredBackground(195, 50).withSize(new Size(105, 180)).withColor(new Colors(Color.GRAY, Color.BLACK)).withBorders(true).withTransparency(0.35F).draw(); // Skin viewer
+//        
+//        new Text("&7• Pseudo: Synzkah", 305, 55).draw();
+//        new Text("&7• INFO: Synzkah", 305, 65).draw();
+//        new Text("&7• INFO: Synzkah", 305, 75).draw();
+//        new Text("&7• INFO: Synzkah", 305, 85).draw();
+//        new Text("&7• INFO: Synzkah", 305, 95).draw();
+//        new Text("&7• INFO: Synzkah", 305, 105).draw();
+//        new Text("&7• INFO: Synzkah", 305, 115).draw();
+//        new Text("&7• INFO: Synzkah", 305, 125).draw();
+//        
+//        new Text("&7&m----------------------", 305, 135).draw();
+//        
+//        new Text("&cClassement(s): ", 305, 145).draw();
+//        new Text("&cSolo: 1er", 315, 155).draw();
+//        new Text("&cDuo: 10ème ", 315, 165).draw();
+//        new Text("&cSquad: ??? ", 315, 175).draw();
+//        new Text("&cFactions: ??? ", 315, 185).draw();
+//        new Text("&cMoney: ???/? ", 315, 195).draw();
 	}
 
 	@Override
 	public void updateInterface() {
 
+		if (this.transparency < 0.7F)
+			this.transparency = transparency + 0.05F; 
+		
 	}
 
 }

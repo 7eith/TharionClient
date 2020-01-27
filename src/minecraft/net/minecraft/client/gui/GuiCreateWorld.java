@@ -357,20 +357,20 @@ public class GuiCreateWorld extends GuiScreen
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
         if (this.field_146333_g.isFocused() && !this.field_146344_y)
         {
-            this.field_146333_g.textboxKeyTyped(p_73869_1_, p_73869_2_);
+            this.field_146333_g.textboxKeyTyped(typedChar, keyCode);
             this.field_146330_J = this.field_146333_g.getText();
         }
         else if (this.field_146335_h.isFocused() && this.field_146344_y)
         {
-            this.field_146335_h.textboxKeyTyped(p_73869_1_, p_73869_2_);
+            this.field_146335_h.textboxKeyTyped(typedChar, keyCode);
             this.field_146329_I = this.field_146335_h.getText();
         }
 
-        if (p_73869_2_ == 28 || p_73869_2_ == 156)
+        if (keyCode == 28 || keyCode == 156)
         {
             this.actionPerformed((GuiButton)this.buttonList.get(0));
         }

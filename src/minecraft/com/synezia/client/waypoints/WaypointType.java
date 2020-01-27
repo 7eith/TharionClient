@@ -13,7 +13,7 @@ import lombok.Getter;
 @Getter @AllArgsConstructor
 public enum WaypointType {
 	
-    PLAYER(Colors.YELLOW),
+    PLAYER(Colors.LIGHT_BLUE),
     TRADE(Colors.YELLOW),
     EVENT(Colors.YELLOW),
     FACTION(Colors.YELLOW),

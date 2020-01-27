@@ -264,19 +264,19 @@ public class GuiScreenBook extends GuiScreen
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_)
+    protected void keyTyped(char typedChar, int keyCode)
     {
-        super.keyTyped(p_73869_1_, p_73869_2_);
+        super.keyTyped(typedChar, keyCode);
 
         if (this.bookIsUnsigned)
         {
             if (this.field_146480_s)
             {
-                this.func_146460_c(p_73869_1_, p_73869_2_);
+                this.func_146460_c(typedChar, keyCode);
             }
             else
             {
-                this.keyTypedInBook(p_73869_1_, p_73869_2_);
+                this.keyTypedInBook(typedChar, keyCode);
             }
         }
     }

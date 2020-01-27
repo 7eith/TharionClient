@@ -147,7 +147,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
     /**
      * Fired when a key is typed. This is the equivalent of KeyListener.keyTyped(KeyEvent e).
      */
-    protected void keyTyped(char p_73869_1_, int p_73869_2_) {}
+    protected void keyTyped(char typedChar, int keyCode) {}
 
     /**
      * Adds the buttons (and other controls) to the screen in question.
